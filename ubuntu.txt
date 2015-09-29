@@ -103,7 +103,7 @@ pushd [+num] 压入目录栈 小于num的目录在目录栈中移动
 popd 弹出栈 工作目录转移到 栈[1]
 popd [+num] 从栈中删除制定的目录 工作目录不变
 dirs 显示目录栈
-dirs -c 清空目录栈
+dirs -c 清空目录栈sudo
 
 ls -CrR1
 ls | wc -l 子节点数量（包括分支和叶子）
@@ -113,6 +113,23 @@ ls -r (reverse)以相反的顺序输出
 ls -R (recursive)递归 显示整个目录树 
 ls -F 文件类型 空：普通文件，不可执行 *:普通可执行文件 /目录 @符号链接 |命名管道
 ls --color 用颜色标识不同的文件
+ls -s size 文件大小
+ls h* 匹配一组h开头的文件名 ? 单个字符 [lsit] [^list] {string1|string2}
+ls -a 显示隐藏文件 .文件
+
+cat mkdir touch 也可以使用{}扩展用法同ls
+
+
+file 文件类型
+
+du [-achs] disk usage 显示文件大小 -h human readable  -s sum
+sudo du / -hs 2>/dev/null 显示总磁盘使用 并重定向错误到位桶
+
+df disk free-sapce
+
+quota 用户配额
+
+
 
 **********************************************
 sublimeText 3 for input chinese
