@@ -1,0 +1,76 @@
+ubuntu 14.04 
+---------------------------------------------------
+http://blog.sina.com.cn/s/blog_a6559d920102v7fw.html
+*************configuration file****************
+/etc/apt/source.list
+
+
+ 文件名+路径                   ：   用途
+
+~/.bashrc    				 :   每个用户都有一个自己的.bashrc文件，在用户的目录下，用来保存改用户的
+
+                       			bash shell信息，每次登录或者打开新的shell时被读取。
+
+~/.profile （~/.bash_profile) :  用于执行当前用户的.bashrc文件，该文件可以设置一些环境变量，用户登录时
+
+                                会执行一次。可以编辑改用户自己专有的shell信息。
+
+/etc/bash.bashrc (bashrc) 	:  用来保存所有用户bash shell信息的文件，bash shell打开的时候会读取。
+
+/etc/profile 				: 用来保存所有用户的环境信息，第一次登录时，改文件被执行，从同目录下
+
+profile.d目录的配置中搜寻shell的设置。
+
+/etc/profile中设定的变量(全局)的可以作用于任何用户,
+
+~/.bashrc等中设定的变量(局部)只能继承/etc/profile中的变量,他们是"父子"关系.
+ 
+~/.profile 是交互式、login 方式进入bash 运行的；
+~/.bashrc 是交互式 non-login 方式进入bash 运行的；
+通常二者设置大致相同，所以通常profile会调用bashrc。
+ 
+Linux版本：Ubuntu 14.04.
+
+在这个版本下我发现没有.bash_profile这个文件，被.profile代替了。到别的版本上Linux我实验了一下，正好是翻过来的。请大家注意一下。
+
+同样etc目录下没有bashrc这个文件了，被bash.bashrc文件代替了。
+
+----------------------------------------------
+user&auth management
+
+su + username, switch to the other user
+exit back to the preview user
+
+------------------------------------------------
+process
+
+echo $$ #show current shell process Id
+command + & run task at background
+^Z pause the task 
+jobs check the job list
+fg [%jobNo] move the background task to stage
+bg move the stage task to background
+
+ps process status
+ps [-aetfFly] [-p pid] [-u userid]
+default show current user's process
+-a all exclude the daemon process
+-e include daemon process
+-p pid the process about of the pid
+-u userid the process about of the userid
+-t only show daemon process
+-fFly show diff fields for process list
+
+
+-------------------------------------------------
+
+**********************************************
+sublimeText 3 for input chinese
+http://blog.csdn.net/cywosp/article/details/32350899
+*************************************************
+git install and how to use
+http://www.cnblogs.com/jackge/archive/2013/08/17/3264801.html
+************************************************
+
+**********others************************
+^l clean screen, move screen to blank
