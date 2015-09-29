@@ -1,6 +1,7 @@
 ubuntu 14.04 
 ---------------------------------------------------
 http://blog.sina.com.cn/s/blog_a6559d920102v7fw.html
+如何安装及一些基本配置
 *************configuration file****************
 /etc/apt/source.list
 
@@ -42,6 +43,20 @@ su + username, switch to the other user
 exit back to the preview user
 
 ------------------------------------------------
+***************tools*************************
+type 命令 查看命令的来源
+tee 分流
+条件执行 
+command1 && command2 
+command1 || command2
+
+history 输入命令的历史列表
+fc -s 重新执行上一条命令
+fc -s no 重新执行编号的命令
+fs -s pattern=replacement no 替换编号命令中的内容并执行
+
+
+------------------------------------------------
 process
 
 echo $$ #show current shell process Id
@@ -63,6 +78,40 @@ default show current user's process
 
 
 -------------------------------------------------
+***************文件系统*************************
+/usr 静态数据使用的文件系统
+/var 可变数据使用的文件系统
+/etc 配置文件
+/lib 共享库
+/opt 第三方应用程序（“可选软件”）
+
+/usr/bin 非基本程序（大多数用户程序）
+/usr/include C程序的头文件
+/usr/lib 非基本共享库
+/usr/local 本地安装程序
+/usr/share	共享系统数据
+/usr/src 	源代码
+
+cd 将切换到Home 目录
+cd - 将回到上个目录
+
+mkdir -p directory 自动创建父目录
+rmdir 不能删除非空目录 工作目录和根目录之间的目录
+rmdir -p essays/history/roman/unix/research 一次性删除目录树上的所有目录 但是目录树上不能有其他分支或者叶子
+
+pushd [+num] 压入目录栈 小于num的目录在目录栈中移动
+popd 弹出栈 工作目录转移到 栈[1]
+popd [+num] 从栈中删除制定的目录 工作目录不变
+dirs 显示目录栈
+dirs -c 清空目录栈
+
+ls -CrR1
+ls | wc -l 子节点数量（包括分支和叶子）
+ls -C 以列的方式输出到管道线
+ls -1 每个文件占一行输出
+ls -r (reverse)以相反的顺序输出
+ls -R (recursive)递归 显示整个目录树 
+
 
 **********************************************
 sublimeText 3 for input chinese
