@@ -116,6 +116,7 @@ ls --color 用颜色标识不同的文件
 ls -s size 文件大小
 ls h* 匹配一组h开头的文件名 ? 单个字符 [lsit] [^list] {string1|string2}
 ls -a 显示隐藏文件 .文件
+ls -i 显示i节点编号
 
 cat mkdir touch 也可以使用{}扩展用法同ls
 
@@ -129,8 +130,67 @@ df disk free-sapce
 
 quota 用户配额
 
+*****************文件操作***********************
+touch 改变文件的修改时间和访问时间
+touch [-acm] [-t time] file..... -m 只改变修改时间 -a 只改变访问时间
+time 的格式是 [[YY|YY|MMDDhhmm[.ss]]]
+使用touch 的副作用(文件不存在则)创建文件
+-c 文件不存在则不创建新文件
+
+cp -i: (interactive) 替换之前询问 -p (preserve) 目标文件与源文件有相同的修改，访问时间 权限
+*.[]{} 通配符cp 可用
+cp data[123] backups 拷贝3个文件到目录
+cp -r (recursive) diretory1 diretory2 将一个目录及其所有文件拷贝到另一个目录
+cp docuemnts/* backups 利用通配符拷贝目录中的文件到另一个目录
+
+mv -i -f force 移动或者重命名
+rm 删除文件 -r recursive 删除整个目录树
+
+cat 追加文件
+
+ln file newname 链接新名字到同一文件
+
+whereis 显示命令相关的文件
+locate 搜索特定模式的文件数据库
+locate -r 正则 -c count 总数 -i ignorecase 忽略大小写 -b 匹配文件名（基名） -S locate数据库的信息
+
+find path... test... action....
+test...
+-name pattern 文件名
+-iname pattern 不区分大小写
+-type [df]	d 目录 f 普通文件
+-user userid	属主
+-size [-+]n[cbkMG] 大小为 n [字节，块，千字节, 兆字节, 吉字节]
+-amin [-+]n 	n分钟之前访问
+-anewer file 	file文件之后访问
+-atime [-+]n 	n天之前访问
+-cmin [-+]n 	n分钟之前状态改变
+-cnewer file 	file 文件之后状态改变
+-mmin [-+]n 	n分钟之前修改
+-mtime [-+]n 	n天之前修改
+-newer file 	file 文件之后修改
+
+find ~ -type f -size +100M -print 查找大于100M的文件
+! 求反
+find ~ \! -type f \! -type d -print 既不是普通文件也不是目录的文件， 符号链接 命名管道 特殊文件等
+
+action...
+-print 写入标准输出
+-fprint file 输出写入file
+-ls 显示长目录列表
+-fls file
+-delete 删除
+-exec command {} \; 执行command， {}指示匹配的文件名
+-ok command {} \; 同 -exec 但是运行之前需要确认
+xargs 处理管道输入 并使用 参数指定的命令 执行
+
+find ~ -type f -mtime +365 | xargs grep "hunter huang" 查找当前用户的Home目录中 修改时间超过365天的文件 传送给grep 在其中查找包含 "hunter huang" 的行
+-i {} 占位符
+find . -type f | xargs -i mv {} ~/backups/{}.old 找到移动并重命名加 old
 
 
+
+------------------------------------------------
 **********************************************
 sublimeText 3 for input chinese
 http://blog.csdn.net/cywosp/article/details/32350899
@@ -141,3 +201,10 @@ http://www.cnblogs.com/jackge/archive/2013/08/17/3264801.html
 
 **********others************************
 ^l clean screen, move screen to blank
+
+sudo rmmod psmouse 禁用触摸板
+sudo modprobe psmouse 启用触摸板
+
+------------------------------------------------
+*******************alias***************************
+alias del='fc -s ls=rm' 使用别名来明确安全的删除文件
